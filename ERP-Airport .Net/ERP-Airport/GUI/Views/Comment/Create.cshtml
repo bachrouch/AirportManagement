@@ -1,0 +1,122 @@
+﻿@model Airport.Domain.Entities.comment
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_ClientTemplate.cshtml";
+}
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*<a class="navbar-brand" href="index.html"><strong>@ViewBag.userLastName  @ViewBag.userFirstName</strong></a>*@
+        </div>
+        <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul></div>
+</nav>
+<!-- /. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li class="text-center">
+                @{
+                    string src = Gravatar.NET.GravatarService.GetGravatarUrlForAddress(ViewBag.userMail);
+
+                    if (ViewBag.sexe == "homme")
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png"; }
+
+                    else
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-128.png"; }
+
+
+                    src += "?size=180";
+                }
+
+                <img src="@src" class="user-image img-responsive" />
+            </li>
+            
+            <li>
+                <i class="fa fa-dashboard fa-3x"></i>  @Html.ActionLink("Profile", "Welcome", "Welcome")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>  @Html.ActionLink("My Reservations", "Index", "Reservation")
+            </li>
+            <li>
+                <i class="fa fa-qrcode fa-3x"></i>  @Html.ActionLink("Search a flight", "Index", "FlightUser")
+            </li>
+            <li class="active-menu">
+                <i class="fa fa-table fa-3x"></i>   @Html.ActionLink("Comments", "MyComments", "Comment")
+            </li>
+            <li>
+                <i class="fa fa-edit fa-3x"></i> @Html.ActionLink("Claims", "Index", "SendMail")
+
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+</div>
+<div id="page-wrapper">
+    <div id="page-inner">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>comment</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group" style="visibility: hidden">
+                    @Html.LabelFor(model => model.idComment, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.idComment, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.idComment, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="visibility: hidden">
+                    @Html.LabelFor(model => model.editionDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.editionDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.editionDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.text, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.text, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.text, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" style="visibility: hidden">
+                    @Html.LabelFor(model => model.customer_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.customer_id, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.customer_id, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        </div>
+</div>

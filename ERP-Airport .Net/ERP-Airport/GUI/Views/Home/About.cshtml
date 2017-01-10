@@ -1,0 +1,394 @@
+﻿@model IEnumerable<Airport.Domain.Entities.comment>
+@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_VisteurTemplate.cshtml";
+}
+<style>
+    table {
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 0.5em auto;
+        border-collapse: collapse;
+        min-width: 23em;
+        width: 70%;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+    }
+
+    .datagrid table {
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 0.5em auto;
+        border-collapse: collapse;
+        min-width: 23em;
+        width: 70%;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+    }
+
+    .datagrid {
+        font: normal 12px/150% Arial, Helvetica, sans-serif;
+        background: #fff;
+        overflow: hidden;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+        .datagrid table td, .datagrid table th {
+            padding: 6px 6px;
+        }
+
+        .datagrid table thead th {
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #495457), color-stop(1, #319950) );
+            background: -moz-linear-gradient( center top, #495457 5%, #319950 100% );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#495457', endColorstr='#319950');
+            background-color: #495457;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+            .datagrid table thead th:first-child {
+                border: none;
+                padding: 10px;
+            }
+
+        .datagrid table tbody td {
+            color: #275420;
+            font-size: 13px;
+            font-weight: normal;
+            padding: 10px;
+        }
+
+        .datagrid table tbody .alt td {
+            background: #DFFFDE;
+            color: #275420;
+        }
+
+        .datagrid table tbody td:first-child {
+            border-left: none;
+        }
+
+        .datagrid table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .datagrid table tfoot td div {
+            border-top: 1px solid #36752D;
+            background: #DFFFDE;
+        }
+
+        .datagrid table tfoot td {
+            padding: 7px;
+            font-size: 12px;
+        }
+
+        .datagrid table tfoot {
+            background: #B5FAB2;
+        }
+
+        .datagrid div {
+            padding: 2px;
+        }
+
+        .datagrid ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        .datagrid li {
+            display: inline;
+        }
+
+            .datagrid li a {
+                text-decoration: none;
+                display: inline-block;
+                padding: 2px 8px;
+                margin: 1px;
+                color: #FFFFFF;
+                border: 1px solid #36752D;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );
+                background: -moz-linear-gradient( center top, #36752D 5%, #275420 100% );
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');
+                background-color: #36752D;
+            }
+
+        .datagrid ul.active, .datagrid ul a:hover {
+            text-decoration: none;
+            border-color: #275420;
+            color: #FFFFFF;
+            background: none;
+            background-color: #36752D;
+        }
+
+    div.dhtmlx_window_active, div.dhx_modal_cover_dv {
+        position: fixed !important;
+    }
+</style>
+<section class="header">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" title="HOME"><i class="ion-paper-airplane"></i>AIR<span>Port</span></a>
+        </div> <!-- /.navbar-header -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+@Html.Partial("_LoginPartial")          
+          <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Search a flight", "index", "Flight")</li>
+            </ul> <!-- /.nav -->
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+</nav>
+</section>    
+    <div id="header">
+    <div class="flexslider">
+        <ul class="slides">
+            <li class="slider-item" style="background-image: url('@Url.Content("~/Content/VisiteurTemplate/")assets/images/section-header.png')">
+                <div class="intro container">
+                    <div class="inner-intro">
+                        <h1 class="header-title">
+                            <span>Our Story</span>
+                        </h1>
+                    </div>
+                </div>
+            </li> <!-- /.slider-item -->
+        </ul> <!-- /.slides -->
+    </div> <!-- /.flexslider -->
+</div> <!-- /#header -->
+<!-- Who we are -->
+<section class="wwa section-wrapper">
+    <div class="container">
+        <h2 class="section-title">
+            Who we are?
+        </h2>
+        <p class="section-subtitle">
+            Lorem Ipsum is simply dummy text of the industry.
+        </p>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <div class="who">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/ab-1.png" alt="" class="img-responsive who-img">
+                    <h3>
+                        We Advance
+                    </h3>
+                    <p class="who-detail">
+                    </p>
+                </div>
+            </div> <!-- /.col-sm-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="who">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/ab-2.png" alt="" class="img-responsive who-img">
+                    <h3>
+                        Helpul Guide
+                    </h3>
+                    <p class="who-detail">
+                    </p>
+                </div>
+            </div> <!-- /.col-sm-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="who">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/ab-3.png" alt="" class="img-responsive who-img">
+                    <h3>
+                        Travel anywhere
+                    </h3>
+                    <p class="who-detail">
+                    </p>
+                </div>
+            </div> <!-- /.col-sm-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="who">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/ab-4.png" alt="" class="img-responsive who-img">
+                    <h3>
+                        our best transport
+                    </h3>
+                    <p class="who-detail">
+                    </p>
+                </div>
+            </div> <!-- /.col-sm-3 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section> <!-- /.wwa -->
+<!-- Story and Client -->
+<section class="story-and-client section-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="story">
+                    <h2 class="section-title">
+                        Our Story
+                    </h2>
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/client.png" alt="story" class="story-img">
+                    <p class="story-detail">
+                    </p>
+                    <p class="story-detail">
+                    </p>
+                </div> <!-- /.story -->
+            </div> <!-- /.col-sm-6 -->
+            <div class="col-sm-6">
+                <div class="story">
+                    <h2 class="section-title">
+                        Client feedback
+                    </h2>
+                    <div class="datagrid">
+                        <table class="table _table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Customer
+                                    </th>
+                                    <th>
+                                        Comment
+                                    </th>
+                                    <th>
+                                        Date Comment
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+            {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.user.firstName)  @Html.DisplayFor(modelItem => item.user.lastName)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.text)
+
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.editionDate)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table> <!-- /.table -->
+                    </div>
+                    </div> <!-- /.story -->
+            </div> <!-- /.col-sm-6 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section> <!-- /.story-and-client -->
+
+<div class="container">
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/qUHLCobRgaE" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div> <!-- /.container -->
+
+<div class="section-wrapper sponsor">
+    <div class="container">
+        <div class="owl-carousel sponsor-carousel">
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+        </div> <!-- /.owl-carousel -->
+    </div> <!-- /.container -->
+</div> <!-- /.sponsor -->

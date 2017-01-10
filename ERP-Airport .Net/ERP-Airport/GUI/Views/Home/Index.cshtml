@@ -1,0 +1,421 @@
+﻿@model GUI.Models.CountryModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_VisteurTemplate.cshtml";
+}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+       google.load("visualization", "1", {packages:["geochart"]});
+      google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        // Create and populate the data table.
+        var country = '@Model.CountrytData.CountryName';
+        //Pereparing string into array
+         var countryarray=country.split(',');
+        var population = [@Model.CountrytData.Visiteurs];
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '@Model.CountryTitle');
+        data.addColumn('number', '@Model.VisteursTitle');
+        for (i = 0; i < countryarray.length; i++) {
+            data.addRow([countryarray[i].toString(), population[i]]);
+        }
+        var options = { colorAxis: { colors: ['#4DB8FF'] } };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        chart.draw(data, options);
+     
+    }
+</script>
+
+<script type="text/javascript">
+
+    google.load("visualization", "1", { packages:['corechart']});
+      google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        // Create and populate the data table.
+        var country = '@Model.CountrytData.CountryName';
+        //Pereparing string into array
+         var countryarray=country.split(',');
+        var population = [@Model.CountrytData.Visiteurs];
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '@Model.CountryTitle');
+        data.addColumn('number', '@Model.VisteursTitle');
+        for (i = 0; i < countryarray.length; i++) {
+            data.addRow([countryarray[i].toString(), population[i]]);
+        }
+        var options = {};
+
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+
+    }
+</script>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" title="HOME"><i class="ion-paper-airplane"></i>AIR<span>Port</span></a>
+        </div> <!-- /.navbar-header -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            @Html.Partial("_LoginPartial")
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Search a flight", "index", "Flight")</li>
+              
+            </ul> <!-- /.nav -->
+          
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+</nav>
+<!-- Home -->
+<div id="header">
+    <div class="flexslider">
+        <ul class="slides">
+            <li class="slider-item" style="background-image: url('@Url.Content("~/Content/VisiteurTemplate/")assets/images/2.jpg')">
+                <div class="intro container">
+                    <div class="inner-intro">
+                        <h1 class="header-title">
+                            <span>traveling</span> always "good idea"
+                        </h1>
+                        <p class="header-sub-title">
+                            it leaves you speecless, then turns your into a storyteller.
+                        </p>
+                        <button class="btn custom-btn">
+                            book now
+                        </button>
+                    </div>
+                </div>
+            </li> <!-- /.slider-item -->
+            <li class="slider-item" style="background-image: url('@Url.Content("~/Content/VisiteurTemplate/")assets/images/1.jpg')">
+                <div class="intro">
+                    <div class="inner-intro">
+                        <h1 class="header-title">
+                            to <span>travel</span> is to <span>live</span>
+                        </h1>
+                        <p class="header-sub-title">
+                            it leaves you speecless, then turns your into a storyteller.
+                        </p>
+                        <button class="btn custom-btn">
+                            book now
+                        </button>
+                    </div>
+                </div>
+            </li> <!-- /.slider-item -->
+        </ul> <!-- /.slides -->
+    </div> <!-- /.flexslider -->
+</div> <!-- /#header -->
+
+<!-- Our Blazzing offers -->
+<section class="offer section-wrapper">
+    <div class="container">
+        <h2 class="section-title">
+            Our Blazzing offers
+        </h2>
+        <p class="section-subtitle">
+           
+        </p>
+        <div class="row">
+            <div class="col-sm-3 col-xs-6">
+                <div class="offer-item">
+                    <div class="icon">
+                        <i class="ion-social-euro"></i>
+                    </div>
+                    <h3>
+                        Affordable Pricing
+                    </h3>
+                    <p>
+                       
+                    </p>
+                </div>
+            </div> <!-- /.col-md-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="offer-item">
+                    <div class="icon">
+                        <i class="ion-ios-home"></i>
+                    </div>
+                    <h3>
+                        High class Hotels
+                    </h3>
+                    <p>
+                    </p>
+                </div>
+            </div> <!-- /.col-md-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="offer-item">
+                    <div class="icon">
+                        <i class="ion-android-bus"></i>
+                    </div>
+                    <h3>
+                        Luxury Transport
+                    </h3>
+                    <p>
+                    </p>
+                </div>
+            </div> <!-- /.col-md-3 -->
+            <div class="col-sm-3 col-xs-6">
+                <div class="offer-item">
+                    <div class="icon">
+                        <i class="ion-ios-locked"></i>
+                    </div>
+                    <h3>
+                        Highest Security
+                    </h3>
+                    <p>
+                    </p>
+                </div>
+            </div> <!-- /.col-md-3 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section> <!-- /.offer -->
+
+<!-- Top place to visit -->
+<section class="visit section-wrapper">
+    <div class="container">
+        <h2 class="section-title">
+            Top place to visit
+        </h2>
+        <p class="section-subtitle">
+        </p>
+        <!-- /.Chart -->
+        <center>
+            <div id="regions_div" style="width: 1200px; height: 800px;">
+            </div>
+            <div id="chart_div"></div>
+        </center>
+        <div class="owl-carousel visit-carousel" id="">
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-1.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-2.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-3.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-1.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-2.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+            <div class="item">
+                <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/visit-3.png" alt="visit-image" class="img-responsive visit-item">
+            </div>
+        </div>
+    </div> <!-- /.container -->
+</section> <!-- /.visit -->
+<div class="offer-cta">
+    <div class="container">
+        <div class="offering">
+            <div class="percent">
+                <span>15%</span> off
+            </div>
+            <div class="FTour">
+                for <strong>Family Tour</strong>
+            </div>
+            <a class="btn btn-default price-btn" href="#">
+                see our price
+            </a>
+        </div> <!-- /.offering -->
+    </div> <!-- /.container -->
+</div> <!-- /.offer-cta -->
+<section class="additional-services section-wrapper">
+    <div class="container">
+        <h2 class="section-title">
+            Additional services
+        </h2>
+        <p class="section-subtitle">
+        </p>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-1.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Photography
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-2.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Cycling
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-3.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Waking
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-4.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Skiing
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-5.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Sea beach
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+            <div class="col-md-4 col-sm-6">
+                <div class="custom-table">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/add-srvc-6.png" alt="" class="add-srvc-img">
+                    <div class="add-srvc-detail">
+                        <h4 class="add-srvc-heading">
+                            Hill tracking
+                        </h4>
+                        <p class="add-srvc">
+                        </p>
+                    </div> <!-- /.add-srvc-detail -->
+                </div> <!-- /.custom-table -->
+            </div> <!-- /.col-md-4 col-sm-6 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section> <!-- /.Additional-services -->
+
+<div class="section-wrapper sponsor">
+    <div class="container">
+        <div class="owl-carousel sponsor-carousel">
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-1.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-2.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-3.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-4.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-5.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="@Url.Content("~/Content/VisiteurTemplate/")assets/images/sp-6.png" alt="sponsor-brand" class="img-responsive sponsor-item">
+                </a>
+            </div>
+        </div> <!-- /.owl-carousel -->
+    </div> <!-- /.container -->
+</div> <!-- /.sponsor -->
+

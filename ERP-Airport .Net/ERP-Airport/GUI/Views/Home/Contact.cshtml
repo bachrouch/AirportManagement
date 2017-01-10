@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_VisteurTemplate.cshtml";
+}
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+   google.load('visualization', '1', { 'packages': ['map'] });
+   google.setOnLoadCallback(drawMap);
+
+    function drawMap(country) {
+      var data = google.visualization.arrayToDataTable([
+
+        ['Country', 'Visiteurs'],
+        ['Tunis Airport', '']
+      ]);
+
+      var options = {
+          'width': 500,
+          'height': 800
+      };
+
+    var map = new google.visualization.Map(document.getElementById('chart_div'));
+    map.draw(data, options);
+   // alert("hello");
+   // document.getElementById('chart_div').style.visibility="hidden";
+  };
+</script>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" title="HOME"><i class="ion-paper-airplane"></i>AIR<span>Port</span></a>
+        </div> <!-- /.navbar-header -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+@Html.Partial("_LoginPartial")            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("Search a flight", "index", "Flight")</li>
+            </ul> <!-- /.nav -->
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container -->
+</nav>
+<div id="header">
+    <div class="flexslider">
+        <ul class="slides">
+            <li class="slider-item" style="background-image: url('@Url.Content("~/Content/VisiteurTemplate/")assets/images/section-header.png')">
+                <div class="intro container">
+                    <div class="inner-intro">
+                        <h1 class="header-title">
+                            <span>  get in touch with us</span>
+                        </h1>
+                    </div>
+                </div>
+            </li> <!-- /.slider-item -->
+        </ul> <!-- /.slides -->
+    </div> <!-- /.flexslider -->
+</div> <!-- /#header -->
+
+<section class="section-wrapper contact-and-map">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="section-title">
+                    Send Message
+                </h2>
+                <div class="form">
+                    <div class="input-group">
+                        <input class="form-control border-radius border-right" type="text" placeholder="Name" required>
+                        <span class="input-group-addon  border-radius custom-addon">
+                            <i class="ion-person"></i>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control border-radius border-right" name="email" type="email" placeholder="Email address" required>
+                        <span class="input-group-addon  border-radius custom-addon">
+                            <i class="ion-email"></i>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <input class="form-control border-radius border-right" type="tel" placeholder="Phone number">
+                        <span class="input-group-addon  border-radius custom-addon">
+                            <i class="ion-ios-telephone"></i>
+                        </span>
+                    </div>
+                    <div class="input-group">
+                        <textarea class="form-control border-radius border-right" rows="8" placeholder="Write Message"></textarea>
+                        <!-- <input type="text" name="text" rows="8" class="form-control border-radius border-right message" placeholder="Write Message"> -->
+                        <span class="input-group-addon border-radius custom-addon">
+                            <i class="ion-chatbubbles"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-default border-radius custom-button">SEND MESSAGE </button>
+                </div>
+            </div> <!-- /.col-sm-6 -->
+            <div class="col-sm-6">
+                <h2 class="section-title">
+                    Find Us Via Google Map
+
+                </h2>
+                <div id="chart_div" style="width: 1000px; height: 700px;"></div>
+            </div> <!-- /.col-sm-6 -->
+        </div>
+    </div>
+</section>
+
+<section class="contacts section-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="contact">
+                    <div class="contact-icon">
+                        <i class="ion-android-map"></i>
+                    </div>
+                    <div class="contact-name">
+                        Address
+                    </div>
+                    <div class="contact-detail">
+                        Asowld Avenew P.O Box <br>
+                        353 Mountain View. United States of America.
+                    </div>
+                </div> <!-- /.contact -->
+            </div> <!-- /.col-sm-4 -->
+            <div class="col-sm-4">
+                <div class="contact">
+                    <div class="contact-icon">
+                        <i class="ion-ios-telephone"></i>
+                    </div>
+                    <div class="contact-name">
+                        Phone
+                    </div>
+                    <div class="contact-detail">
+                        Local: 1-800-523-hello <br>
+                        Mobile: 1-400-623-hello
+                    </div>
+                </div> <!-- /.contact -->
+            </div> <!-- /.col-sm-4 -->
+            <div class="col-sm-4">
+                <div class="contact">
+                    <div class="contact-icon">
+                        <i class="ion-email"></i>
+                    </div>
+                    <div class="contact-name">
+                        Email Address
+                    </div>
+                    <div class="contact-detail">
+                        info@themewagon.com <br>
+                        <a href="http://www.themewagon.com">www.themewagon.com</a>
+                    </div>
+                </div> <!-- /.contact -->
+            </div> <!-- /.col-sm-4 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+</section> <!-- /.contacts -->

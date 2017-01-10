@@ -1,0 +1,169 @@
+﻿@model Airport.Domain.Entities.reservation
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_ClientTemplate.cshtml";
+}
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*<a class="navbar-brand" href="index.html"><strong>@ViewBag.userLastName  @ViewBag.userFirstName</strong></a>*@
+        </div>
+        <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul></div>
+</nav>
+<!-- /. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li class="text-center">
+                @{
+                    string src = Gravatar.NET.GravatarService.GetGravatarUrlForAddress(ViewBag.userMail);
+
+                    if (ViewBag.sexe == "homme")
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png"; }
+
+                    else
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-128.png"; }
+
+
+                    src += "?size=180";
+                }
+
+                <img src="@src" class="user-image img-responsive" />
+            </li>
+            <li>
+                <i class="fa fa-dashboard fa-3x"></i>  @Html.ActionLink("Profile", "Welcome", "Welcome")
+            </li>
+            <li class="active-menu">
+                <i class="fa fa-table fa-3x"></i>  @Html.ActionLink("My Reservations", "Index", "Reservation")
+            </li>
+            <li>
+                <i class="fa fa-qrcode fa-3x"></i>  @Html.ActionLink("Search a flight", "Index", "FlightUser")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>   @Html.ActionLink("Comments", "MyComments", "Comment")
+            </li>
+            <li>
+                <i class="fa fa-edit fa-3x"></i> @Html.ActionLink("Claims", "Index", "SendMail")
+
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+</div>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <h2>Details</h2>
+
+        <div>
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    arrival date
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.arrivalDate)
+                </dd>
+
+                <dt>
+                    departure date
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.departureDate)
+                </dd>
+
+
+
+                <dt>
+
+                    take-off time
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.flight.startTime)
+                </dd>
+
+
+
+
+                <dt>
+                    status
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.reservationState)
+                </dd>
+
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.flight.destination)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.flight.destination)
+                </dd>
+
+
+                <dt>
+
+                    @Html.DisplayNameFor(model => model.flight.price)
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.flight.price)
+                </dd>
+
+
+
+                <dt>
+
+                    class
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.flight.classType)
+                </dd>
+
+
+
+                <dt>
+
+                    airline
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.flight.airline.name)
+                </dd>
+
+
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+            @Html.ActionLink("Back to List", "Index")
+
+
+
+
+            <span>
+
+                <a href="@Url.Action("PDF", new { id=Model.id })" class="btn btn-success btn-xs">
+                    <i class="glyphicon glyphicon-download-alt"></i>
+                    &nbsp; PDF
+                </a>
+            </span>
+
+
+
+        </p>
+        </div>
+</div>

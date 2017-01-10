@@ -1,0 +1,259 @@
+﻿@model IEnumerable<Airport.Domain.Entities.flight>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_ClientTemplate.cshtml";
+}
+<style>
+    table {
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 0.5em auto;
+        border-collapse: collapse;
+        min-width: 23em;
+        width: 70%;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+    }
+
+    .datagrid table {
+        box-sizing: border-box;
+        overflow: hidden;
+        margin: 0.5em auto;
+        border-collapse: collapse;
+        min-width: 23em;
+        width: 70%;
+        border-radius: .5em;
+        box-shadow: 0 0 .5em #000;
+    }
+
+    .datagrid {
+        font: normal 12px/150% Arial, Helvetica, sans-serif;
+        background: #fff;
+        overflow: hidden;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+        .datagrid table td, .datagrid table th {
+            padding: 6px 6px;
+        }
+
+        .datagrid table thead th {
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #495457), color-stop(1, #319950) );
+            background: -moz-linear-gradient( center top, #495457 5%, #319950 100% );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#495457', endColorstr='#319950');
+            background-color: #495457;
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+            .datagrid table thead th:first-child {
+                border: none;
+                padding: 10px;
+            }
+
+        .datagrid table tbody td {
+            color: #275420;
+            font-size: 13px;
+            font-weight: normal;
+            padding: 10px;
+        }
+
+        .datagrid table tbody .alt td {
+            background: #DFFFDE;
+            color: #275420;
+        }
+
+        .datagrid table tbody td:first-child {
+            border-left: none;
+        }
+
+        .datagrid table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .datagrid table tfoot td div {
+            border-top: 1px solid #36752D;
+            background: #DFFFDE;
+        }
+
+        .datagrid table tfoot td {
+            padding: 7px;
+            font-size: 12px;
+        }
+
+        .datagrid table tfoot {
+            background: #B5FAB2;
+        }
+
+        .datagrid div {
+            padding: 2px;
+        }
+
+        .datagrid ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        .datagrid li {
+            display: inline;
+        }
+
+            .datagrid li a {
+                text-decoration: none;
+                display: inline-block;
+                padding: 2px 8px;
+                margin: 1px;
+                color: #FFFFFF;
+                border: 1px solid #36752D;
+                -webkit-border-radius: 3px;
+                -moz-border-radius: 3px;
+                border-radius: 3px;
+                background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #36752D), color-stop(1, #275420) );
+                background: -moz-linear-gradient( center top, #36752D 5%, #275420 100% );
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#36752D', endColorstr='#275420');
+                background-color: #36752D;
+            }
+
+        .datagrid ul.active, .datagrid ul a:hover {
+            text-decoration: none;
+            border-color: #275420;
+            color: #FFFFFF;
+            background: none;
+            background-color: #36752D;
+        }
+
+    div.dhtmlx_window_active, div.dhx_modal_cover_dv {
+        position: fixed !important;
+    }
+</style>
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*<a class="navbar-brand" href="index.html"><strong>@ViewBag.userLastName  @ViewBag.userFirstName</strong></a>*@
+        </div>
+        <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul></div>
+</nav>
+<!-- /. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li class="text-center">
+                @{
+                    string src = Gravatar.NET.GravatarService.GetGravatarUrlForAddress(ViewBag.userMail);
+
+                    if (ViewBag.sexe == "homme")
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png"; }
+
+                    else
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-128.png"; }
+
+
+                    src += "?size=180";
+                }
+
+                <img src="@src" class="user-image img-responsive" />
+            </li>
+            <li>
+                <i class="fa fa-dashboard fa-3x"></i>  @Html.ActionLink("Profile", "Welcome", "Welcome")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>  @Html.ActionLink("My Reservations", "Index", "Reservation")
+            </li>
+            <li class="active-menu">
+                <i class="fa fa-qrcode fa-3x"></i>  @Html.ActionLink("Search a flight", "Index", "FlightUser")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>   @Html.ActionLink("Comments", "MyComments", "Comment")
+            </li>
+            <li>
+                <i class="fa fa-edit fa-3x"></i> @Html.ActionLink("Claims", "Index", "SendMail")
+
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+</div>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <div class="datagrid">
+
+            @using (Html.BeginForm())
+            {<p class="text-center">
+        Destination: @Html.TextBox("Search_Data", ViewBag.FilterValue as string)
+        Departure Date: @Html.TextBox("Departure_Time", ViewBag.FilterValue as string)
+        <input type="submit" value="Find" />
+    </p>
+            }
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            Destination
+                        </th>
+                        <th>
+                            Departure Time
+                        </th>
+                        <th>
+                            Arrival Time
+                        </th>
+                        <th>
+                            Price
+                        <th>
+                            Airline
+                        </th>
+                        <th>
+                            Details
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+            {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.destination)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.startTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.arrivalTime)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.price)$
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.airline.name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { id = item.idFlight }, null) |
+                                @Html.ActionLink("Reserver", "Create", "Reservation", new { id = item.idFlight }, null) |
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        </div>
+</div>

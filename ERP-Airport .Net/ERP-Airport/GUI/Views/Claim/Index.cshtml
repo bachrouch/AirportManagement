@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Airport.Domain.Entities.claim>
+@{
+        ViewBag.Title = "Welcome";
+        Layout = "~/Views/Shared/_ClientTemplate.cshtml";
+    }
+<div id="wrapper">
+    <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*<a class="navbar-brand" href="index.html"><strong>@ViewBag.userLastName  @ViewBag.userFirstName</strong></a>*@
+        </div>
+        <div style="color: white;
+padding: 15px 50px 5px 50px;
+float: right;
+font-size: 16px;"><ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul></div>
+</nav>
+<!-- /. NAV TOP  -->
+<nav class="navbar-default navbar-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav" id="main-menu">
+            <li class="text-center">
+                @{
+                    string src = Gravatar.NET.GravatarService.GetGravatarUrlForAddress(ViewBag.userMail);
+
+                    if (ViewBag.sexe == "homme")
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-128.png"; }
+
+                    else
+                    { src += "?d=https://cdn1.iconfinder.com/data/icons/user-pictures/100/female1-128.png"; }
+
+
+                    src += "?size=180";
+                }
+
+                <img src="@src" class="user-image img-responsive" />
+            </li>
+            </li>
+            <li>
+                <i class="fa fa-dashboard fa-3x"></i>  @Html.ActionLink("Profile", "Welcome", "Welcome")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>  @Html.ActionLink("My Reservations", "Index", "Reservation")
+            </li>
+            <li>
+                <i class="fa fa-qrcode fa-3x"></i>  @Html.ActionLink("Search a flight", "Index", "FlightUser")
+            </li>
+            <li>
+                <i class="fa fa-table fa-3x"></i>   @Html.ActionLink("Comments", "MyComments", "Comment")
+            </li>
+            <li class="active-menu">
+                <i class="fa fa-edit fa-3x"></i> @Html.ActionLink("Claims", "MyClaims", "Claim")
+
+            </li>
+        </ul>
+
+    </div>
+
+</nav>
+<!-- /. NAV SIDE  -->
+</div>
+<div id="page-wrapper">
+    <div id="page-inner">
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.editionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.subject)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.text)
+                </th>
+
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.editionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.subject)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.text)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Details", "Details", new { id = item.idClaim }) |
+
+                        @Html.ActionLink("MyClaims", "MyClaims", new { id = item.customer_id })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div></div>

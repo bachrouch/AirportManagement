@@ -1,0 +1,143 @@
+﻿@model GUI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_VisteurTemplate.cshtml";
+
+}
+<section class="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" title="HOME"><i class="ion-paper-airplane"></i>AIR<span>Port</span></a>
+            </div> <!-- /.navbar-header -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Search a flight", "index", "Flight")</li>
+                </ul> <!-- /.nav -->
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+    </section>
+    <section class="wwa section-wrapper">
+
+        <link href="@Url.Content("~/Content/RegisterLoginTemplates/")css/style.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="keywords" content="Flat UI Web Form Widget and Kit,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--webfonts-->
+        <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+        <!--//webfonts-->
+        <!--/start-login-one-->
+
+        <div class="login-02">
+            <div class="two-login  hvr-float-shadow">
+                <div class="two-login-head">
+                    <img src="@Url.Content("~/Content/RegisterLoginTemplates/")images/top-note.png" alt="" />
+                    <h2>register</h2>
+                    <lable></lable>
+                </div>
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <h4>Create a new account.</h4>
+                    <hr />
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="text">
+                        <a href="#" class=" icon2 user2"></a>
+
+                        <li>
+                            @Html.TextBoxFor(m => m.firstName, new { placeholder = "firstname" })
+                        </li>
+
+                    </div>
+
+                    <div class="text">
+                        <a href="#" class=" icon2 user2"></a>
+                        <li>
+                            @Html.TextBoxFor(m => m.lastName, new { placeholder = "lastname" })
+                        </li>
+
+                    </div>
+
+
+                    <div class="text">
+                        <a href="#" class=" icon2 user2"></a>
+                        <li>
+                            @Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
+                        </li>
+                    </div>
+
+                    <div style="color:gray">
+
+                        @Html.DropDownListFor(m => m.sexe, new List<SelectListItem> {
+            new SelectListItem{Text= "Femme"},
+            new SelectListItem{Text= "Homme"}})
+
+
+                    </div>
+                    <br />
+
+
+
+                    <div class="text">
+                        <a href="#" class=" icon2 mail"></a>
+                        <li>
+                            @Html.TextBoxFor(m => m.Email, new { placeholder = "exple@dom.tn" })
+                        </li>
+                    </div>
+
+
+                    <div class="text">
+                        <a href="#" class=" icon2 lock2"></a>
+                        <li>
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+                        </li>
+                    </div>
+
+
+
+
+                    <div class="text">
+                        <a href="#" class=" icon2 lock2"></a>
+                        <li>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { placeholder = "password" })
+                        </li>
+                    </div>
+
+
+
+                    <div class="submit two">
+
+                        <div class="form-group">
+
+                            <input type="submit" value="Sign Up" class="btn btn-default" />
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+
+    @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@

@@ -1,0 +1,160 @@
+﻿@using GUI.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+   Layout = "~/Views/Shared/_VisteurTemplate.cshtml";
+}
+<section class="header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" title="HOME"><i class="ion-paper-airplane"></i>AIR<span>Port</span></a>
+            </div> <!-- /.navbar-header -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul> <li class="active">@Html.Partial("_LoginPartial")</li></ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Services", "Services", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Search a flight", "index", "Flight")</li>
+                </ul> <!-- /.nav -->
+
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+    </section>
+    <section class="wwa section-wrapper">
+
+        <link href="@Url.Content("~/Content/RegisterLoginTemplates/")css/style.css" rel='stylesheet' type='text/css' />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="keywords" content="Flat UI Web Form Widget and Kit,Login Forms,Sign up Forms,Registration Forms,News latter Forms,Elements" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+        <!--webfonts-->
+        <link href='http://fonts.googleapis.com/css?family=Cabin:400,500,600,700,400italic,500italic,600italic,700italic' rel='stylesheet' type='text/css'>
+        <!--//webfonts-->
+        <!--/start-login-one-->
+        <div class="login-01">
+            <div class="one-login  hvr-float-shadow">
+                <div class="one-login-head">
+                    <img src="@Url.Content("~/Content/RegisterLoginTemplates/")images/top-lock.png" alt="" />
+                    <h1>LOGIN</h1>
+                    <span></span>
+                </div>
+
+
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                    <div class="text">
+                        <a href="#" class=" icon user"></a>
+                        <li>
+                            @Html.TextBoxFor(m => m.UserName, new { placeholder = "username" })
+                        </li>
+                        @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+
+
+
+                    <a href="#" class=" icon lock"></a>
+
+                    <div class="text">
+                        <li>
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "password" })
+                        </li>
+                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <div class="checkbox">
+                                <label class="checkbox" style="color:gray">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="clear"> </div>
+                    </div>
+
+
+                    @*<div class="p-container">
+                            <label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>Remember Me</label>
+                            <h6><a href="#">Forgot Password ?</a> </h6>
+                            <div class="clear"> </div>
+                        </div>*@
+
+
+                    <div class="submit">
+
+                        <div class="form-group">
+
+                            <input type="submit" value="Log in" class="btn btn-default" />
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    @* Enable this once you have account confirmation enabled for password reset functionality
+                        <p>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                        </p>*@
+
+
+                    <div class="social-icons">
+                        <p>Follow us on</p>
+                        <ul class="soc_icons2">
+                            <li class="pic"><a href="https://www.facebook.com/ERPAirport/?ref=hl"><i class="icon_4"></i></a></li>
+                            <li class="pic"><a href="https://plus.google.com/u/0/"><i class="icon_6"></i></a></li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </div>
+                    <p>
+                        @Html.ActionLink("Don't have an account ?", "Register")
+                    </p>
+                }
+
+
+
+            </div>
+        </div>
+    </section>
+    @*<div class="col-md-4">
+            <section id="socialLoginForm">
+                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+            </section>
+        </div>*@
+
+
+
+    @*@section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }*@
+
+

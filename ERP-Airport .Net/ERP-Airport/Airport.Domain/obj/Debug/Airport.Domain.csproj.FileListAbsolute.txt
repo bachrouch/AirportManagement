@@ -1,0 +1,14 @@
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Airport.Domain.dll.config
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Airport.Domain.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Airport.Domain.pdb
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\EntityFramework.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\EntityFramework.xml
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\obj\Debug\Airport.Domain.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\obj\Debug\Airport.Domain.pdb
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\esprit\Documents\Visual Studio 2015\Projects\ERP-Airportto\ERP-Airport\Airport.Domain\obj\Debug\Airport.Domain.csprojResolveAssemblyReference.cache

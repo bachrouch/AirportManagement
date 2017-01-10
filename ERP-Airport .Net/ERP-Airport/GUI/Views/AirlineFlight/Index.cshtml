@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Airport.Domain.Entities.airline>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idAirline)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.localAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idAirline)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.localAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+           
+            @Html.ActionLink("Commenter", "Create","Comment", new {  id=1 }, null)
+        </td>
+    </tr>
+}
+
+</table>
